@@ -12,16 +12,12 @@
 
 
 ### Setup
-Simple install Ruby using WSL
-Install Ubuntu after system restart 
-Update the environment (optional)
-Open Ubuntu terminal
-Complete setting up with your username and password
-Type in IRB 
-Start programming in Ruby :) 
-Create a pair programming branch 
-Set dev branch as main branch 
-Start developing in VS Code 
+
+Copy this link https://github.com/AsimKhan2019/Catalog_of_Things/.
+Get the directory that you want to clone the repository.
+Open the command prompt in this directory.
+Write git clone git@github.com:AsimKhan2019/Catalog_of_Things.git.
+Go to the repository folder in your command prompt cd tdd.
 
 ### Install
 Install Ruby using WSL 
@@ -51,6 +47,7 @@ Create .rb files for each class
 👤 **Brian Nyachae**
 
 - GitHub: [@githubhandle](https://github.com/Bria222)
+- Twitter: [@twitterhandle](https://twitter.com/briannyachae9)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/brian-nyachae/)
 
 ## 🤝 Contributing
