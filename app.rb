@@ -1,16 +1,18 @@
 require_relative './modules/preserver_module'
 require './modules/book_module'
-require_relative './classes/book'
+require_relative './classes/books'
 require_relative './classes/label'
-require './modules/game_module'
-require_relative './classes/game'
-require './modules/music_album_module'
-require_relative './classes/music_albums'
-require_relative './classes/genre'
+# require './modules/game_module'
+# require_relative './classes/game'
+# require './modules/music_album_module'
+require_relative './classes/music_album'
+# require_relative './classes/genre'
 
 class App
   include PreserverModule
-  attr_reader :books
+  include BookModule
+  # include GameModule
+  # include MusicAlbumModule
 
   def initialize
     @books = []
@@ -38,8 +40,23 @@ class App
   end
 
   def list_all_books
-    puts 'No available books' if @books.empty?
-    @books.each { |book| puts "label: #{book.label}, published on: #{book.publish_date}" }
+    puts "\nNote: No Books available." if @books.empty?
+    puts "\nALL BOOKS\n\n"
+    puts "\nPublisher \t| Publish Date \t| Cover State"
+    @books.each do |book|
+      puts "#{book['publisher']} \t\t| #{book['publish_date']} \t| #{book['cover_state']}"
+      puts "\n-------------------------------------------------"
+    end
+  end
+
+  def list_all_labels
+    puts "\nNote: No Label available." if @labels.empty?
+    puts "\nALL LABELS\n\n"
+    puts "\nLabels \t| Color"
+    @labels.each do |label|
+      puts "#{label['title'].strip} \t| #{label['color']}"
+      puts "\n----------------------------"
+    end
   end
 
   def list_all_albums
@@ -163,24 +180,5 @@ class App
     @genres = load_file('genres')
     @games = load_file('games')
     @authors = load_file('authors')
-  end
-
-  def add_book(book)
-    newbook = Book.new(*book)
-    hash = {
-      'publisher' => newbook.publisher,
-      'publish_date' => newbook.publish_date,
-      'cover_state' => newbook.cover_state
-    }
-    @books << hash
-  end
-
-  def add_label(label)
-    newlabel = Label.new(*label)
-    hash = {
-      'title' => newlabel.title,
-      'color' => newlabel.color
-    }
-    @labels << hash
   end
 end

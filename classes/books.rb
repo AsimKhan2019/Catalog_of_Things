@@ -13,3 +13,4 @@ class Book < Item
     super || cover_state == 'bad'
   end
 end
+
