@@ -14,7 +14,7 @@ module MusicModule
     on_spotify = capture_input('Is Album on Spotify? [Y/N]: ')
 
     on_spotify = on_spotify == 'Y' || false
-    
+
     add_album(album_name, publish_date, genre, on_spotify)
 
     puts "\nNew Music Album and Genre Added!"

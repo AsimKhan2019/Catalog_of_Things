@@ -160,7 +160,7 @@ class App
     save_data_as_json(@games, 'games')
     save_data_as_json(@authors, 'authors')
   end
-  
+
   private
 
   def load_data
