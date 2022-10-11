@@ -1,6 +1,6 @@
 require_relative 'items'
 
-class Book
+class Book < Item
   attr_accessor :publisher :cover_state
 
   def initialize(publisher = 'Unknown', cover_state = 'Unknown', publish_date)
