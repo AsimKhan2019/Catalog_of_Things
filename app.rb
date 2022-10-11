@@ -10,9 +10,7 @@ require_relative './classes/genre'
 
 class App
   include PreserverModule
-  include BookModule
-  include GameModule
-  include MusicAlbumModule
+  attr_reader :books
 
   def initialize
     @books = []
@@ -40,23 +38,8 @@ class App
   end
 
   def list_all_books
-    puts "\nNote: No Books available." if @books.empty?
-    puts "\nALL BOOKS\n\n"
-    puts "\nPublisher \t| Publish Date \t| Cover State"
-    @books.each do |book|
-      puts "#{book['publisher']} \t\t| #{book['publish_date']} \t| #{book['cover_state']}"
-      puts "\n-------------------------------------------------"
-    end
-  end
-
-  def list_all_labels
-    puts "\nNote: No Label available." if @labels.empty?
-    puts "\nALL LABELS\n\n"
-    puts "\nLabels \t| Color"
-    @labels.each do |label|
-      puts "#{label['title'].strip} \t| #{label['color']}"
-      puts "\n----------------------------"
-    end
+    puts 'No available books' if @books.empty?
+    @books.each { |book| puts "label: #{book.label}, published on: #{book.publish_date}" }
   end
 
   def list_all_albums
@@ -180,5 +163,24 @@ class App
     @genres = load_file('genres')
     @games = load_file('games')
     @authors = load_file('authors')
+  end
+
+  def add_book(book)
+    newbook = Book.new(*book)
+    hash = {
+      'publisher' => newbook.publisher,
+      'publish_date' => newbook.publish_date,
+      'cover_state' => newbook.cover_state
+    }
+    @books << hash
+  end
+
+  def add_label(label)
+    newlabel = Label.new(*label)
+    hash = {
+      'title' => newlabel.title,
+      'color' => newlabel.color
+    }
+    @labels << hash
   end
 end
