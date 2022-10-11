@@ -5,13 +5,6 @@ require_relative './classes/books'
 require_relative './classes/label'
 require_relative './classes/music_album'
 require_relative './classes/genre'
-require './modules/book_module'
-require_relative './classes/books'
-require_relative './classes/label'
-require './modules/book_module'
-require_relative './classes/books'
-require_relative './classes/label'
-require_relative './classes/music_album'
 
 class App
   include PreserverModule
@@ -47,21 +40,6 @@ class App
   def list_all_books
     puts 'No available books' if @books.empty?
     @books.each { |book| puts "#{book['publisher']} #{book['publish_date']} #{book['cover_state']}" }
-  end
-
-  def list_all_albums
-    puts 'No available albums' if @albums.empty?
-    @albums.each do |album|
-      puts "#{album['genre_name'].to_s.strip} \t| #{album['on_spotify?']
-      .to_s.strip.rjust(10)} \t| #{album['album_name'].to_s.strip.rjust(10)} \t| #{album['publish_date']
-      .to_s.strip.rjust(10)}"
-      puts "\n---------------------------------------------------"
-    end
-  end
-
-  def list_all_games
-    puts 'No available games' if @games.empty?
-    @games.each { |game| puts "genre: #{game.genre}, published on: #{game.publish_date}" }
   end
 
   def list_all_labels
@@ -172,45 +150,6 @@ class App
       'multiplayer' => new_game_instance.multiplayer
     }
     @games << hash
-  end
-
-  def add_book(book)
-    newbook = Book.new(*book)
-    hash = {
-      'publisher' => newbook.publisher,
-      'publish_date' => newbook.publish_date,
-      'cover_state' => newbook.cover_state
-    }
-    @books << hash
-  end
-
-  def add_label(label)
-    newlabel = Label.new(*label)
-    hash = {
-      'title' => newlabel.title,
-      'color' => newlabel.color
-    }
-    @labels << hash
-  end
-
-  def add_album(album_name, publish_date, genre_name, on_spotify)
-    newalbum = MusicAlbum.new(album_name, publish_date, on_spotify)
-    newgenre = Genre.new(genre_name)
-    newalbum.genre = newgenre
-
-    hash = {
-      'album_name' => newalbum.name,
-      'publish_date' => newalbum.publish_date,
-      'on_spotify?' => newalbum.on_spotify,
-      'genre' => newgenre.name
-    }
-
-    genre_hash = {
-      'genre_name' => newgenre.name
-    }
-
-    @albums << hash
-    @genres << genre_hash
   end
 
   def preserve_files
