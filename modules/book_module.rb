@@ -27,4 +27,3 @@ module BookModule
     puts "\n-------------------------------"
   end
 end
-
