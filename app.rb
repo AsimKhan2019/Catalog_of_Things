@@ -34,7 +34,7 @@ class App
 
   def list_all_books
     puts 'No available books' if @books.empty?
-    @books.each { |book| puts puts "#{book['publisher']} #{book['publish_date']} #{book['cover_state']}" }
+    @books.each { |book| puts "#{book['publisher']} #{book['publish_date']} #{book['cover_state']}" }
   end
 
   def list_all_albums
