@@ -9,8 +9,8 @@ class Label
     @items = []
   end
 
-  def add_items(items)
-    @items << items
-    items.label = self
+  def add_items(item)
+    @items << item
+    item.label = self
   end
 end
