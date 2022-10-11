@@ -1,7 +1,11 @@
 require_relative './modules/preserver_module'
+require_relative './modules/book_module'
+require_relative './classes/books'
+require_relative './classes/label'
 
 class App
   include PreserverModule
+  include BookModule
   attr_reader :books
 
   def initialize
@@ -30,7 +34,7 @@ class App
 
   def list_all_books
     puts 'No available books' if @books.empty?
-    @books.each { |book| puts "label: #{book.label}, published on: #{book.publish_date}" }
+    @books.each { |book| puts "#{book['publisher']} #{book['publish_date']} #{book['cover_state']}" }
   end
 
   def list_all_albums
@@ -76,5 +80,24 @@ class App
     @genres = load_file('genres')
     @games = load_file('games')
     @authors = load_file('authors')
+  end
+
+  def add_book(book)
+    newbook = Book.new(*book)
+    hash = {
+      'publisher' => newbook.publisher,
+      'publish_date' => newbook.publish_date,
+      'cover_state' => newbook.cover_state
+    }
+    @books << hash
+  end
+
+  def add_label(label)
+    newlabel = Label.new(*label)
+    hash = {
+      'title' => newlabel.title,
+      'color' => newlabel.color
+    }
+    @labels << hash
   end
 end
