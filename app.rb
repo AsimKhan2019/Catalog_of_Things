@@ -16,18 +16,8 @@ require_relative './classes/music_album'
 class App
   include PreserverModule
   include BookModule
-<<<<<<< HEAD
-<<<<<<< HEAD
   include MusicModule
   attr_reader :books
-=======
-  # include GameModule
-  # include MusicAlbumModule
->>>>>>> eb6963cf7e6c592d9770524c539b4b7399401aef
-=======
-  # include GameModule
-  # include MusicAlbumModule
->>>>>>> eb6963cf7e6c592d9770524c539b4b7399401aef
 
   def initialize
     @books = []
@@ -55,8 +45,6 @@ class App
   end
 
   def list_all_books
-<<<<<<< HEAD
-<<<<<<< HEAD
     puts 'No available books' if @books.empty?
     @books.each { |book| puts "#{book['publisher']} #{book['publish_date']} #{book['cover_state']}" }
   end
@@ -74,27 +62,6 @@ class App
   def list_all_games
     puts 'No available games' if @games.empty?
     @games.each { |game| puts "genre: #{game.genre}, published on: #{game.publish_date}" }
-  end
-
-  def list_all_genres
-    puts 'No available genre' if @genres.empty?
-    @genres.each do |genre|
-      puts genre['genre_name'].to_s.strip
-      puts "\n----------------------------"
-=======
-=======
->>>>>>> eb6963cf7e6c592d9770524c539b4b7399401aef
-    puts "\nNote: No Books available." if @books.empty?
-    puts "\nALL BOOKS\n\n"
-    puts "\nPublisher \t| Publish Date \t| Cover State"
-    @books.each do |book|
-      puts "#{book['publisher']} \t\t| #{book['publish_date']} \t| #{book['cover_state']}"
-      puts "\n-------------------------------------------------"
-<<<<<<< HEAD
->>>>>>> eb6963cf7e6c592d9770524c539b4b7399401aef
-=======
->>>>>>> eb6963cf7e6c592d9770524c539b4b7399401aef
-    end
   end
 
   def list_all_labels
@@ -133,9 +100,6 @@ class App
 
   def list_all_genres
     puts "\nNote: No genres available." if @genres.empty?
-
-    puts "\nALL GENRES\n\n"
-    puts "\Name"
     @genres.each do |genre|
       puts genre['genre_name'].to_s.strip
       puts "\n----------------------------"
@@ -150,8 +114,6 @@ class App
       puts "#{author['first_name']} \t| #{author['last_name']}"
       puts "\n-------------------------------------------------"
     end
-<<<<<<< HEAD
-=======
   end
 
   def add_book(new_book)
@@ -210,69 +172,8 @@ class App
       'multiplayer' => new_game_instance.multiplayer
     }
     @games << hash
->>>>>>> eb6963cf7e6c592d9770524c539b4b7399401aef
   end
 
-  def add_book(new_book)
-    new_book_instance = Book.new(*new_book)
-    hash = {
-      'publisher' => new_book_instance.publisher,
-      'publish_date' => new_book_instance.publish_date,
-      'cover_state' => new_book_instance.cover_state
-    }
-    @books << hash
-  end
-
-  def add_label(new_label)
-    new_label_instance = Label.new(*new_label)
-    hash = {
-      'title' => new_label_instance.title,
-      'color' => new_label_instance.color
-    }
-    @labels << hash
-  end
-<<<<<<< HEAD
-
-  def add_author(new_author)
-    new_author_instance = Author.new(*new_author)
-    hash = {
-      'first_name' => new_author_instance.first_name,
-      'last_name' => new_author_instance.last_name
-    }
-    @authors << hash
-  end
-
-  def add_album(album_name, publish_date, genre_name, on_spotify)
-    new_album_instance = MusicAlbum.new(on_spotify, album_name, publish_date)
-    new_genre_instance = Genre.new(genre_name)
-    new_album_instance.genre = new_genre_instance
-
-    hash = {
-      'album_name' => new_album_instance.name,
-      'publish_date' => new_album_instance.publish_date,
-      'on_spotify?' => new_album_instance.on_spotify,
-      'genre' => new_genre_instance.name
-    }
-
-    genre_hash = {
-      'genre_name' => new_genre_instance.name
-    }
-
-    @albums << hash
-    @genres << genre_hash
-  end
-
-  def add_game(new_game)
-    new_game_instance = Game.new(*new_game)
-    hash = {
-      'game_name' => new_game_instance.game_name,
-      'last_played_at' => new_game_instance.last_played_at,
-      'multiplayer' => new_game_instance.multiplayer
-    }
-    @games << hash
-  end
-
-<<<<<<< HEAD
   def add_book(book)
     newbook = Book.new(*book)
     hash = {
@@ -312,8 +213,6 @@ class App
     @genres << genre_hash
   end
 
-=======
->>>>>>> eb6963cf7e6c592d9770524c539b4b7399401aef
   def preserve_files
     save_data_as_json(@books, 'books')
     save_data_as_json(@labels, 'labels')
@@ -322,11 +221,7 @@ class App
     save_data_as_json(@games, 'games')
     save_data_as_json(@authors, 'authors')
   end
-<<<<<<< HEAD
   
-=======
-
->>>>>>> eb6963cf7e6c592d9770524c539b4b7399401aef
   private
 
   def load_data
@@ -337,6 +232,4 @@ class App
     @games = load_file('games')
     @authors = load_file('authors')
   end
-=======
->>>>>>> eb6963cf7e6c592d9770524c539b4b7399401aef
 end
