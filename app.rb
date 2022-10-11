@@ -1,7 +1,11 @@
 require_relative './modules/preserver_module'
+require_relative './modules/book_module'
+require_relative './classes/books'
+require_relative './classes/label'
 
 class App
   include PreserverModule
+  include BookModule
   attr_reader :books
 
   def initialize
@@ -76,5 +80,15 @@ class App
     @genres = load_file('genres')
     @games = load_file('games')
     @authors = load_file('authors')
+  end
+
+  def add_book(publisher, publish_date, cover_state)
+    newbook = Book.new(publisher, publish_date, cover_state)
+    @books << newbook
+  end
+
+  def add_label(title, color)
+    newlabel = Label.new(title, color)
+    @labels << newlabel
   end
 end
