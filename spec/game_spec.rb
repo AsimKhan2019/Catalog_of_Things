@@ -8,4 +8,8 @@ describe Game do
         expect(game).to be_an_instance_of Game
     end
 
+    it 'Expects game to match multiplayer' do
+        expect(game1.multiplayer).to eq 'asim'
+    end
+
 end
