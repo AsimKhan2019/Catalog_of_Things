@@ -35,3 +35,8 @@ CREATE TABLE Albums (
   FOREIGN KEY (author_id) REFERENCES Author(id)
   FOREIGN KEY (label_id) REFERENCES Label(id)
 )
+
+CREATE TABLE Genre (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100)
+)
