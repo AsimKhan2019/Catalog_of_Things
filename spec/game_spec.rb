@@ -12,4 +12,7 @@ describe Game do
         expect(game1.multiplayer).to eq 'asim'
     end
 
+    it 'Expects game to match game name' do
+        expect(game1.game_name).to eq 'Brian game'
+    end
 end
