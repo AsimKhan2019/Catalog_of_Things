@@ -1,18 +1,16 @@
 require_relative './modules/preserver_module'
-require './modules/book_module'
+require_relative './modules/book_module'
+require_relative './modules/music_album_module'
 require_relative './classes/books'
 require_relative './classes/label'
-# require './modules/game_module'
-# require_relative './classes/game'
-# require './modules/music_album_module'
 require_relative './classes/music_album'
-# require_relative './classes/genre'
+require_relative './classes/genre'
 
 class App
   include PreserverModule
   include BookModule
-  # include GameModule
-  # include MusicAlbumModule
+  include MusicModule
+  attr_reader :books
 
   def initialize
     @books = []
@@ -40,13 +38,8 @@ class App
   end
 
   def list_all_books
-    puts "\nNote: No Books available." if @books.empty?
-    puts "\nALL BOOKS\n\n"
-    puts "\nPublisher \t| Publish Date \t| Cover State"
-    @books.each do |book|
-      puts "#{book['publisher']} \t\t| #{book['publish_date']} \t| #{book['cover_state']}"
-      puts "\n-------------------------------------------------"
-    end
+    puts 'No available books' if @books.empty?
+    @books.each { |book| puts "#{book['publisher']} #{book['publish_date']} #{book['cover_state']}" }
   end
 
   def list_all_labels
@@ -85,9 +78,6 @@ class App
 
   def list_all_genres
     puts "\nNote: No genres available." if @genres.empty?
-
-    puts "\nALL GENRES\n\n"
-    puts "\Name"
     @genres.each do |genre|
       puts genre['genre_name'].to_s.strip
       puts "\n----------------------------"
