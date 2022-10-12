@@ -3,4 +3,6 @@ module GameModule
         print "#{request_text}: "
         gets.chomp
     end
+    def add_new_game_details
+    end
 end
