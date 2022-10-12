@@ -46,3 +46,19 @@ CREATE TABLE Author (
   first_name VARCHAR(100),
   last_name VARCHAR(100)
 )
+
+CREATE TABLE Games (
+    id INT GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR (50),
+    genre_id INT,
+    author_id INT,
+    label_id INT,
+    publish_date DATE,
+    multiplayer BOOLEAN,
+    last_played_at DATE,
+    archived BOOLEAN,
+    PRIMARY KEY (id),
+    FOREIGN KEY (genre_id) REFERENCES Genre(id)
+    FOREIGN KEY (author_id) REFERENCES Author(id)
+    FOREIGN KEY (label_id) REFERENCES Label(id)
+);
