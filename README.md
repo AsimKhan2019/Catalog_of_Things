@@ -29,6 +29,14 @@ Install the latest Ruby Installer
 Open the VS Code and install the bundles after creating the GEM file 
 Create .rb files for each class 
 
+`
+## to run tests for the application 
+
+
+rspec spec spec/book_spec.rb
+
+`
+
 ## Authors
 
 👤 **Asim Mehmood Khan**
